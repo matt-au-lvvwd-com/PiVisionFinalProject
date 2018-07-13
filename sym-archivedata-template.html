@@ -1,0 +1,26 @@
+<div ng-style="{'background-color': config.BackgroundColor, 'border-raidus': config.BorderRadius + 'px'}">
+  <select name="timeinterval" id="timeinterval" ng-model="config.TimeInterval"
+          ng-style="{'ackground-color': config.BackgroundColor}">
+    <option>Daily</option>
+    <option>Monthly</option>
+    <option>Yearly</option>
+  </select>
+  <table style="border: 1px solid black;">
+    <tr>
+      <td style="border: 1px solid black;">&nbsp;</td>
+      <td style="border: 1px solid black;" ng-repeat='l in Labels track by $index'>{{ l }}</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black;">Date</td>
+      <td style="border: 1px solid black;" ng-repeat='u in Units track by $index'>{{ u }}</td>
+    </tr>
+    <tr ng-repeat="r in DataItems track by $index">
+      <td style="border: 1px solid black;">
+        {{ r.Timestamp | date : config.DateFormat}}
+      </td>
+      <td style="border: 1px solid black;">
+        {{ r.Value | number: config.DisplayDigits }}
+      </td>
+    </tr>
+  </table>
+</div>
